@@ -1,0 +1,52 @@
+{
+    "name": "easyagency/laravel-admin",
+    "description": "Admin interface for Laravel",
+    "keywords": [
+        "laravel",
+        "admin"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "easyagency",
+            "email": "support@easy-agency.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0",
+        "diglactic/laravel-breadcrumbs": "5.x",
+        "illuminate/support": "^8.0",
+        "spatie/laravel-permission": "^3.6.0",
+        "spatie/laravel-translation-loader": "^2.5.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.7.* | 3.8.*",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Support/helpers.php"
+        ],
+        "psr-4": {
+            "Easyagency\\LaravelAdmin\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Easyagency\\FreeKassa\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Easyagency\\LaravelAdmin\\LaravelAdminServiceProvider"
+            ],
+            "aliases": {
+                "LaravelAdmin": "Easyagency\\LaravelAdmin\\Facades\\LaravelAdmin"
+            }
+        }
+    }
+}
