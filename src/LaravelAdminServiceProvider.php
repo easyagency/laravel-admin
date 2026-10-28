@@ -34,6 +34,9 @@ class LaravelAdminServiceProvider extends ServiceProvider
     {
         parent::register();
 
+        $this->mergeConfigFrom(__DIR__.'/../config/admin.php', 'admin');
+        $this->registerBreadcrumbs();
+
         $this->commands([
             RequestMakeCommand::class,
             ControllerMakeCommand::class,
@@ -72,7 +75,6 @@ class LaravelAdminServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/admin.php', 'admin');
 
         $this->registerRoutes();
-        $this->registerBreadcrumbs();
         $this->registerBladeDirectives();
     }
 
@@ -140,7 +142,7 @@ class LaravelAdminServiceProvider extends ServiceProvider
     protected function registerBreadcrumbs()
     {
         config()->set('breadcrumbs.files', array_merge(
-            (array) config('breadcrumbs.files'),
+            array_values(array_filter((array) config('breadcrumbs.files'), 'is_file')),
             [__DIR__.'/../routes/breadcrumbs.php']
         ));
 
@@ -155,9 +157,9 @@ class LaravelAdminServiceProvider extends ServiceProvider
     protected function registerBladeDirectives()
     {
         Blade::directive('breadcrumbs', function ($expression) {
-            return "<?php echo Breadcrumbs::render($expression); ?>";
+            return "<?php echo \\Diglactic\\Breadcrumbs\\Breadcrumbs::render($expression); ?>";
         });
 
-        Blade::component('admin::components._form-group', 'formGroup');
+        Blade::aliasComponent('admin::components._form-group', 'formGroup');
     }
 }

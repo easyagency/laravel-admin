@@ -2,7 +2,7 @@
 
 namespace Easyagency\LaravelAdmin\Breadcrumbs;
 
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsManager as Base;
+use Diglactic\Breadcrumbs\Manager as Base;
 
 class BreadcrumbsManager extends Base
 {
@@ -10,8 +10,8 @@ class BreadcrumbsManager extends Base
      * @param $name
      * @param $title
      *
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\DuplicateBreadcrumbException
-     * @throws \DaveJamesMiller\Breadcrumbs\Exceptions\UnnamedRouteException
+     * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException
+     * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException
      */
     public function resource($name, $title)
     {

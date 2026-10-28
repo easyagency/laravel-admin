@@ -1,6 +1,6 @@
 <?php
 
-namespace Easyagency\LaravelAdmin\src\Models;
+namespace Easyagency\LaravelAdmin\Models;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -48,10 +48,7 @@ class Navigation extends Model
      *
      * @var array
      */
-    protected $dates = [
-        'updated_at',
-        'created_at',
-    ];
+
 
     /**
      * Appends to JSON.
@@ -86,6 +83,9 @@ class Navigation extends Model
      * @var array
      */
     protected $casts = [
+        'updated_at' => 'datetime',
+        'created_at' => 'datetime',
+
         //
     ];
 }

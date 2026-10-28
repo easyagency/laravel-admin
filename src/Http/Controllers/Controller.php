@@ -4,7 +4,6 @@ namespace Easyagency\LaravelAdmin\Http\Controllers;
 
 use \Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Str;
-use Easyagency\LaravelFilters\Filters;
 
 abstract class Controller extends BaseController
 {
@@ -50,7 +49,7 @@ abstract class Controller extends BaseController
     public function callAction($method, $parameters)
     {
         if(! method_exists($this, $method)) {
-            return $this->view(compact($parameters));
+            return $this->view($parameters);
         }
 
         return parent::callAction($method, $parameters);
